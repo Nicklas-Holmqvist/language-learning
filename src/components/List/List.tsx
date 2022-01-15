@@ -9,8 +9,8 @@ const List = () => {
     const [loaded, setLoaded] = useState(true)
     const [corrected, setCorrected] = useState(false)
 
-    const [list, setList] = useState([{i:1,w:'Ett',b:false,n:'',c:undefined}, {i:2,w:'2',b:false,n:'',c:false}, {i:3,w:'3',b:false,n:'',c:false}, {i:4,w:'4',b:false,n:'',c:false}, {i:5,w:'5',b:false,n:'',c:false}, {i:6,w:'6',b:false,n:'',c:false}, {i:7,w:'7',b:false,n:'',c:false}, {i:8,w:'8',b:false,n:'',c:false}, {i:9,w:'9',b:false,n:'',c:false}, {i:10,w:'10',b:false,n:'',c:false}])
-    const [listTwo, setListTwo] = useState([{i:1,w:'One',b:false,n:'',c:false}, {i:2,w:'2',b:false,n:'',c:false}, {i:3,w:'3',b:false,n:'',c:false}, {i:4,w:'4',b:false,n:'',c:false}, {i:5,w:'5',b:false,n:'',c:false}, {i:6,w:'6',b:false,n:'',c:false}, {i:7,w:'7',b:false,n:'',c:false}, {i:8,w:'8',b:false,n:'',c:false}, {i:9,w:'9',b:false,n:'',c:false}, {i:10,w:'10',b:false,n:'',c:false}])
+    const [list, setList] = useState([{i:1,w:'mun',b:false,n:'',c:undefined}, {i:2,w:'tand',b:false,n:'',c:false}, {i:3,w:'mage',b:false,n:'',c:false}, {i:4,w:'svans',b:false,n:'',c:false}, {i:5,w:'armbåge',b:false,n:'',c:false}, {i:6,w:'axel',b:false,n:'',c:false}])
+    const [listTwo, setListTwo] = useState([{i:1,w:'mouth',b:false,n:'',c:false}, {i:2,w:'tooth',b:false,n:'',c:false}, {i:3,w:'stomach',b:false,n:'',c:false}, {i:4,w:'tail',b:false,n:'',c:false}, {i:5,w:'elbow',b:false,n:'',c:false}, {i:6,w:'shoulder',b:false,n:'',c:false}])
 
     useEffect(() => {
         if(loaded === true) {
@@ -120,7 +120,7 @@ const List = () => {
         <Grid container direction='column' className={classes.container}>
             <p>Hejdå!</p>
             <button onClick={correctAnswers}>Rätta</button> 
-            <Grid container>
+            <Grid container className={classes.wordContainer}>
                 <Grid item>
                     <p>Svenska</p>
                     {mapListOne}

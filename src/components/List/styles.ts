@@ -10,6 +10,10 @@ export default makeStyles(() => ({
         maxWidth: '48rem',
         width: '100%',
     },
+    wordContainer: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
     word: {
         display: 'flex',
         width: '15rem',
