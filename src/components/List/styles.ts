@@ -12,7 +12,7 @@ export default makeStyles(() => ({
     },
     word: {
         display: 'flex',
-        width: '10rem',
+        width: '15rem',
         justifyContent: 'flex-end'
     },
     choiceLeft: {
