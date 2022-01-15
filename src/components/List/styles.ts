@@ -7,22 +7,57 @@ export default makeStyles(() => ({
     container: {
         display: 'flex',
         justifyContent: 'center',
-        maxWidth: '48rem',
+        maxWidth: '20rm',
         width: '100%',
+        height: '90vh'
+    },
+    section: {
+        height: '100%',
+        width: '25rem',
+        display: 'flex',
+        alignContent: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column'
     },
     wordContainer: {
         display: 'flex',
-        justifyContent: 'center'
+        width: '10rem',
+        justifyContent: 'center',
+        marginBottom: '2rem'
     },
-    word: {
+    wordLeft: {
         display: 'flex',
-        width: '15rem',
-        justifyContent: 'flex-end'
-    },
-    choiceLeft: {
+        width: '10rem',
+        justifyContent: 'space-between',
         paddingRight: '2rem'
     },
-    choiceRight: {
+    wordRight: {
+        display: 'flex',
+        width: '10rem',
+        justifyContent: 'space-between',
         paddingLeft: '2rem'
+    },
+    choiceLeft: {
+        paddingLeft: '2rem'
+    },
+    choiceRight: {
+        paddingRight: '2rem'
+    },
+    left: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
+    right: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
+    btn: {
+        width: '7rem',
+    },
+    title: {
+        paddingBottom: '1rem'
+    },
+    header: {
+        paddingBottom: '1rem'
     },
 }))

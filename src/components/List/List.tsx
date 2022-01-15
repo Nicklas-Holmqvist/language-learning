@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import useStyles from './styles';
 
@@ -86,8 +86,7 @@ const List = () => {
     }
 
     const mapListOne = list.map((word) => 
-    <Grid key={word.i} container item direction='row' className={classes.word}>
-        {word.n !== '' && <p className={classes.choiceLeft}>{word.n}</p>}
+    <Grid key={word.i} item direction='row' className={classes.wordLeft}>
         <Button 
             onClick={handleChoice} 
             variant={word.b ? 'contained' : 'outlined'} 
@@ -98,11 +97,13 @@ const List = () => {
             >
                 {word.w}
         </Button> 
+        {word.n !== '' && <Typography className={classes.choiceLeft}>{word.n}</Typography>}
     </Grid>
     )
 
     const mapListTwo = listTwo.map((word) => 
-        <Grid key={word.i} container item direction='row' className={classes.word}>
+        <Grid key={word.i} item direction='row' className={classes.wordRight}>
+        {word.n !== '' && <Typography className={classes.choiceRight}>{word.n}</Typography>}
         <Button 
             onClick={handleChoice} 
             variant={word.b ? 'contained' : 'outlined'} 
@@ -113,22 +114,23 @@ const List = () => {
             >
                 {word.w}
         </Button> 
-        {word.n !== '' && <p className={classes.choiceRight}>{word.n}</p>}
     </Grid>)
 
     return(
-        <Grid container direction='column' className={classes.container}>
-            <p>Hejdå!</p>
-            <button onClick={correctAnswers}>Rätta</button> 
-            <Grid container className={classes.wordContainer}>
-                <Grid item>
-                    <p>Svenska</p>
-                    {mapListOne}
+        <Grid container className={classes.container}>
+            <Grid container className={classes.section}>
+                <Typography className={classes.header} variant='h3'>Glosan</Typography>
+                <Grid container className={classes.wordContainer}>
+                    <Grid item direction='column' className={classes.left}>
+                        <Typography className={classes.title}>Svenska</Typography>
+                        {mapListOne}
+                    </Grid>
+                    <Grid item direction='column' className={classes.right}>
+                        <Typography className={classes.title}>Engelska</Typography>
+                        {mapListTwo}
+                    </Grid>
                 </Grid>
-                <Grid item>
-                    <p>Engelska</p>
-                    {mapListTwo}
-                </Grid>
+                <Button className={classes.btn} variant='contained' onClick={correctAnswers}>Rätta</Button> 
             </Grid>
         </Grid>
     )
