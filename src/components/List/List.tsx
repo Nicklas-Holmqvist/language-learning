@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import useStyles from './styles';
 import { weekThree } from '../../db/wordLists';
 
+import { IWordItem } from "../../type/wordItem";
+
 const List = () => {
 
     const classes = useStyles()
@@ -10,16 +12,18 @@ const List = () => {
     const [loaded, setLoaded] = useState(true)
     const [corrected, setCorrected] = useState(false)
 
-    const [list, setList] = useState(weekThree[0])
-    const [listTwo, setListTwo] = useState(weekThree[1])
+    const [list, setList] = useState<IWordItem[]>(weekThree[0])
+    const [listTwo, setListTwo] = useState<IWordItem[]>(weekThree[1])
 
     useEffect(() => {
         if(loaded === true) {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             let randomListOne = list.sort((a, b) => Math.random() - 0.5)
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             let randomListTwo = listTwo.sort((a, b) => Math.random() - 0.5)
             setLoaded(false)
         }        
-    },[loaded])
+    },[list, listTwo, loaded])
 
     const [correctListOne, setCorrectedListOne] = useState<{id:any, word: any}[]>([])
     const [correctListTwo, setCorrectedListTwo] = useState<{id:any, word: any}[]>([])
@@ -46,74 +50,76 @@ const List = () => {
         for(let i = 0; i < correctListOne.length; i++) {
             const setCorrect = correctListOne[i].id === correctListTwo[i].id
             if(setCorrect) {
-                const index = list.findIndex((li) => li.i === Number(correctListOne[i].id))
-                list[index].c = true
+                const index = list.findIndex((li) => li.id === Number(correctListOne[i].id))
+                list[index].correct = true
                 setList(list)
             }else {
-                const index = list.findIndex((li) => li.i === Number(correctListOne[i].id))
-                list[index].c = false
+                const index = list.findIndex((li) => li.id === Number(correctListOne[i].id))
+                list[index].correct = false
                 setList(list)
             }
         }
         for(let i = 0; i < correctListTwo.length; i++) {
             const setCorrect = correctListOne[i].id === correctListTwo[i].id
             if(setCorrect) {
-                const index = listTwo.findIndex((li) => li.i === Number(correctListTwo[i].id))
-                listTwo[index].c = true
+                const index = listTwo.findIndex((li) => li.id === Number(correctListTwo[i].id))
+                listTwo[index].correct = true
                 setListTwo(listTwo)
             }else {
-                const index = listTwo.findIndex((li) => li.i === Number(correctListTwo[i].id))
-                listTwo[index].c = false
+                const index = listTwo.findIndex((li) => li.id === Number(correctListTwo[i].id))
+                listTwo[index].correct = false
                 setListTwo(listTwo)
             }
         }
-        let rightOrderListOne = list.sort((a, b) => {return a.i - b.i})
-        let rightOrderListTwo = listTwo.sort((a, b) => {return a.i - b.i})
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        let rightOrderListOne = list.sort((a, b) => {return a.id - b.id})
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        let rightOrderListTwo = listTwo.sort((a, b) => {return a.id - b.id})
         setCorrected(true)
     }
 
     const setActive = (id:number, isListOne:boolean) => {
         if(isListOne){
-            const index = list.findIndex((i) => i.i === Number(id)) 
-            list[index].b = true
-            list[index].n = (correctListOne.length+1).toString()
+            const index = list.findIndex((i) => i.id === Number(id)) 
+            list[index].boolean = true
+            list[index].number = (correctListOne.length+1).toString()
             setList(list)
         } else {
-            const index = listTwo.findIndex((i) => i.i === Number(id)) 
-            listTwo[index].b = true
-            listTwo[index].n = (correctListTwo.length+1).toString()
+            const index = listTwo.findIndex((i) => i.id === Number(id)) 
+            listTwo[index].boolean = true
+            listTwo[index].number = (correctListTwo.length+1).toString()
             setListTwo(listTwo)
         }
     }
 
     const mapListOne = list.map((word) => 
-    <Grid key={word.i} item direction='row' className={classes.wordLeft}>
+    <Grid key={word.id} item direction='row' className={classes.wordLeft}>
         <Button 
             onClick={handleChoice} 
-            variant={word.b ? 'contained' : 'outlined'} 
-            className={word.b ? classes.active : ''} 
+            variant={word.boolean ? 'contained' : 'outlined'} 
+            className={word.boolean ? classes.active : ''} 
             value='listOne' 
-            color={word.c && corrected ? 'success' : corrected ? 'error' : 'primary'}
-            id={word.i.toString()}            
+            color={word.correct && corrected ? 'success' : corrected ? 'error' : 'primary'}
+            id={word.id.toString()}            
             >
-                {word.w}
+                {word.word}
         </Button> 
-        <Typography className={classes.choiceLeft}>{word.n !== '' && word.n}</Typography>
+        <Typography className={classes.choiceLeft}>{word.number !== '' && word.number}</Typography>
     </Grid>
     )
 
     const mapListTwo = listTwo.map((word) => 
-        <Grid key={word.i} item direction='row' className={classes.wordRight}>
-       <Typography className={classes.choiceRight}>{word.n !== '' && word.n}</Typography>
+        <Grid key={word.id} item direction='row' className={classes.wordRight}>
+       <Typography className={classes.choiceRight}>{word.number !== '' && word.number}</Typography>
         <Button 
             onClick={handleChoice} 
-            variant={word.b ? 'contained' : 'outlined'} 
-            className={word.b ? classes.active : ''} 
+            variant={word.boolean ? 'contained' : 'outlined'} 
+            className={word.boolean ? classes.active : ''} 
             value='listTwo' 
-            color={word.c && corrected ? 'success' : corrected ? 'error' : 'primary'}
-            id={word.i.toString()}
+            color={word.correct && corrected ? 'success' : corrected ? 'error' : 'primary'}
+            id={word.id.toString()}
             >
-                {word.w}
+                {word.word}
         </Button> 
     </Grid>)
 
