@@ -1,9 +1,10 @@
 import { Button, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import useStyles from './styles';
-import { weekThree } from '../../db/wordLists';
+
+import { weeks } from '../../db/wordLists';
 
 import { IWordItem } from "../../type/wordItem";
+import useStyles from './styles';
 
 const List = () => {
 
@@ -12,9 +13,12 @@ const List = () => {
     const [loaded, setLoaded] = useState(true)
     const [corrected, setCorrected] = useState(false)
 
-    const [listOne, setListOne] = useState<IWordItem[]>(weekThree[0])
-    const [listTwo, setListTwo] = useState<IWordItem[]>(weekThree[1])
+    const [listOne, setListOne] = useState<IWordItem[]>([])
+    const [listTwo, setListTwo] = useState<IWordItem[]>([])
 
+    const [listOfWeeks, setListOfWeeks] = useState<string[]>([])
+
+    console.log(Object.keys(weeks[0]))
     useEffect(() => {
         if(loaded === true) {
             let randomListOne = listOne.sort((a, b) => Math.random() - 0.5)
@@ -24,6 +28,15 @@ const List = () => {
             setLoaded(false)
         }        
     },[listOne, listTwo, loaded])
+    
+    useEffect(() => {
+        const newWeekList:any = []
+        for(let i = 0; i < weeks.length; i++) {
+            const week = (weeks[i])
+            newWeekList.push(Object.keys(week)[0])
+        }
+        setListOfWeeks(newWeekList)
+    },[])
 
     const [correctListOne, setCorrectedListOne] = useState<{id:any, word: any}[]>([])
     const [correctListTwo, setCorrectedListTwo] = useState<{id:any, word: any}[]>([])
@@ -93,7 +106,7 @@ const List = () => {
     }
 
     const mapListOne = listOne.map((word) => 
-    <Grid key={word.id} item direction='row' className={classes.wordLeft}>
+    <Grid key={word.id} container item direction='row' className={classes.wordLeft}>
         <Button 
             onClick={handleChoice} 
             variant={word.boolean ? 'contained' : 'outlined'} 
@@ -109,7 +122,7 @@ const List = () => {
     )
 
     const mapListTwo = listTwo.map((word) => 
-        <Grid key={word.id} item direction='row' className={classes.wordRight}>
+        <Grid key={word.id} container item direction='row' className={classes.wordRight}>
        <Typography className={classes.choiceRight}>{word.number !== '' && word.number}</Typography>
         <Button 
             onClick={handleChoice} 

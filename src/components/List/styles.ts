@@ -13,7 +13,7 @@ export default makeStyles(() => ({
     },
     section: {
         height: '100%',
-        width: '25rem',
+        width: '30rem',
         display: 'flex',
         alignContent: 'center',
         justifyContent: 'center',
@@ -21,19 +21,19 @@ export default makeStyles(() => ({
     },
     wordContainer: {
         display: 'flex',
-        width: '10rem',
+        width: '30rem',
         justifyContent: 'center',
         marginBottom: '2rem'
     },
     wordLeft: {
         display: 'flex',
-        width: '10rem',
+        width: '15rem',
         justifyContent: 'space-between',
         paddingRight: '2rem'
     },
     wordRight: {
         display: 'flex',
-        width: '10rem',
+        width: '15rem',
         justifyContent: 'space-between',
         paddingLeft: '2rem'
     },
