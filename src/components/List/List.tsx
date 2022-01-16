@@ -12,18 +12,18 @@ const List = () => {
     const [loaded, setLoaded] = useState(true)
     const [corrected, setCorrected] = useState(false)
 
-    const [list, setList] = useState<IWordItem[]>(weekThree[0])
+    const [listOne, setListOne] = useState<IWordItem[]>(weekThree[0])
     const [listTwo, setListTwo] = useState<IWordItem[]>(weekThree[1])
 
     useEffect(() => {
         if(loaded === true) {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            let randomListOne = list.sort((a, b) => Math.random() - 0.5)
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            let randomListOne = listOne.sort((a, b) => Math.random() - 0.5)
             let randomListTwo = listTwo.sort((a, b) => Math.random() - 0.5)
+            setListOne(randomListOne)
+            setListTwo(randomListTwo)
             setLoaded(false)
         }        
-    },[list, listTwo, loaded])
+    },[listOne, listTwo, loaded])
 
     const [correctListOne, setCorrectedListOne] = useState<{id:any, word: any}[]>([])
     const [correctListTwo, setCorrectedListTwo] = useState<{id:any, word: any}[]>([])
@@ -50,13 +50,13 @@ const List = () => {
         for(let i = 0; i < correctListOne.length; i++) {
             const setCorrect = correctListOne[i].id === correctListTwo[i].id
             if(setCorrect) {
-                const index = list.findIndex((li) => li.id === Number(correctListOne[i].id))
-                list[index].correct = true
-                setList(list)
+                const index = listOne.findIndex((li) => li.id === Number(correctListOne[i].id))
+                listOne[index].correct = true
+                setListOne(listOne)
             }else {
-                const index = list.findIndex((li) => li.id === Number(correctListOne[i].id))
-                list[index].correct = false
-                setList(list)
+                const index = listOne.findIndex((li) => li.id === Number(correctListOne[i].id))
+                listOne[index].correct = false
+                setListOne(listOne)
             }
         }
         for(let i = 0; i < correctListTwo.length; i++) {
@@ -71,19 +71,19 @@ const List = () => {
                 setListTwo(listTwo)
             }
         }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        let rightOrderListOne = list.sort((a, b) => {return a.id - b.id})
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        let rightOrderListOne = listOne.sort((a, b) => {return a.id - b.id})
         let rightOrderListTwo = listTwo.sort((a, b) => {return a.id - b.id})
+        setListOne(rightOrderListOne)
+        setListTwo(rightOrderListTwo)
         setCorrected(true)
     }
 
     const setActive = (id:number, isListOne:boolean) => {
         if(isListOne){
-            const index = list.findIndex((i) => i.id === Number(id)) 
-            list[index].boolean = true
-            list[index].number = (correctListOne.length+1).toString()
-            setList(list)
+            const index = listOne.findIndex((i) => i.id === Number(id)) 
+            listOne[index].boolean = true
+            listOne[index].number = (correctListOne.length+1).toString()
+            setListOne(listOne)
         } else {
             const index = listTwo.findIndex((i) => i.id === Number(id)) 
             listTwo[index].boolean = true
@@ -92,7 +92,7 @@ const List = () => {
         }
     }
 
-    const mapListOne = list.map((word) => 
+    const mapListOne = listOne.map((word) => 
     <Grid key={word.id} item direction='row' className={classes.wordLeft}>
         <Button 
             onClick={handleChoice} 
