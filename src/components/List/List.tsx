@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
 import ReplayIcon from '@mui/icons-material/Replay';
 
-
 import { weeks } from '../../db/wordLists';
 
 import { IWordItem } from "../../type/wordItem";
