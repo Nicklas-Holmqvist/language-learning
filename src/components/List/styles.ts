@@ -22,7 +22,8 @@ export default makeStyles(() => ({
     wordContainer: {
         display: 'flex',
         width: '30rem',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        padding: '0 1rem',
         marginBottom: '2rem'
     },
     sectionTop: {
@@ -35,7 +36,7 @@ export default makeStyles(() => ({
         display: 'flex',
         justifyContent: 'space-between',
         width: '30rem',
-        padding: '0 3rem 0 3rem'
+        padding: '0 2rem 0 2rem'
     },
     sectionBottom: {
         display: 'flex',
@@ -48,15 +49,15 @@ export default makeStyles(() => ({
     },
     wordLeft: {
         display: 'flex',
-        width: '15rem',
+        width: '50%',
         justifyContent: 'space-between',
-        paddingRight: '2rem'
+        padding: '0.2rem 0.2rem 0.2rem 0'
     },
     wordRight: {
         display: 'flex',
-        width: '15rem',
+        width: '50%',
         justifyContent: 'space-between',
-        paddingLeft: '2rem'
+        padding: '0.2rem 0 0.2rem 0.2rem'
     },
     choiceLeft: {
         paddingLeft: '2rem'

@@ -55,6 +55,7 @@ const List = () => {
 
     useEffect(() => {
         runRandomList()        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[loaded])
 
     useEffect(() => {
@@ -201,7 +202,6 @@ const List = () => {
                         </FormControl>
                     }
                 </Grid>
-                <Grid container className={classes.wordContainer}>
                     {selectorValue === 0 && 
                         <Grid item>
                             <Typography variant='h5' className={classes.title}>Välj vecka</Typography>
@@ -219,19 +219,20 @@ const List = () => {
                             </FormControl>                        
                         </Grid>
                     }
+                <Grid container className={classes.wordContainer}>
                     <Grid item direction='column' className={classes.left}>
-                        {selectorValue !== 0 && <Typography className={classes.title}>Svenska</Typography>}
+                        {selectorValue !== 0 && <Typography variant='h6' className={classes.title}>Svenska</Typography>}
                         {mapListOne}
                     </Grid>
                     <Grid item direction='column' className={classes.right}>
-                    {selectorValue !== 0 && <Typography className={classes.title}>English</Typography>}
+                    {selectorValue !== 0 && <Typography variant='h6' className={classes.title}>English</Typography>}
                         {mapListTwo}
                     </Grid>
                 </Grid>
                 <Grid item className={classes.sectionBottom}>
                     {selectorValue !== 0 && 
                     <>
-                        <Button className={classes.btn} variant='contained' onClick={correctAnswers}>Rätta</Button>
+                        <Button className={classes.btn} variant='outlined' color="info" onClick={correctAnswers}>Rätta</Button>
                         <IconButton color="primary" onClick={()=>setLoaded(false)} aria-label="reload" component="span">
                             <ReplayIcon />
                         </IconButton>
