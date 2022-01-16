@@ -1,6 +1,7 @@
 import { Button, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import useStyles from './styles';
+import { weekThree } from '../../db/wordLists';
 
 const List = () => {
 
@@ -9,8 +10,8 @@ const List = () => {
     const [loaded, setLoaded] = useState(true)
     const [corrected, setCorrected] = useState(false)
 
-    const [list, setList] = useState([{i:1,w:'mun',b:false,n:'',c:undefined}, {i:2,w:'tand',b:false,n:'',c:false}, {i:3,w:'mage',b:false,n:'',c:false}, {i:4,w:'svans',b:false,n:'',c:false}, {i:5,w:'armbåge',b:false,n:'',c:false}, {i:6,w:'axel',b:false,n:'',c:false}])
-    const [listTwo, setListTwo] = useState([{i:1,w:'mouth',b:false,n:'',c:false}, {i:2,w:'tooth',b:false,n:'',c:false}, {i:3,w:'stomach',b:false,n:'',c:false}, {i:4,w:'tail',b:false,n:'',c:false}, {i:5,w:'elbow',b:false,n:'',c:false}, {i:6,w:'shoulder',b:false,n:'',c:false}])
+    const [list, setList] = useState(weekThree[0])
+    const [listTwo, setListTwo] = useState(weekThree[1])
 
     useEffect(() => {
         if(loaded === true) {
@@ -97,13 +98,13 @@ const List = () => {
             >
                 {word.w}
         </Button> 
-        {word.n !== '' && <Typography className={classes.choiceLeft}>{word.n}</Typography>}
+        <Typography className={classes.choiceLeft}>{word.n !== '' && word.n}</Typography>
     </Grid>
     )
 
     const mapListTwo = listTwo.map((word) => 
         <Grid key={word.i} item direction='row' className={classes.wordRight}>
-        {word.n !== '' && <Typography className={classes.choiceRight}>{word.n}</Typography>}
+       <Typography className={classes.choiceRight}>{word.n !== '' && word.n}</Typography>
         <Button 
             onClick={handleChoice} 
             variant={word.b ? 'contained' : 'outlined'} 
