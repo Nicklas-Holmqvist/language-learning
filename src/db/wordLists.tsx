@@ -1,4 +1,4 @@
-import { IWordItem } from "../type/wordItem";
+// import { IWordItem } from "../type/wordItem";
 
 export const weeks:any = [
   {3:[[
