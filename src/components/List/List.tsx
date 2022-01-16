@@ -18,17 +18,32 @@ const List = () => {
 
     const [listOfWeeks, setListOfWeeks] = useState<string[]>([])
 
-    console.log(Object.keys(weeks[0]))
     useEffect(() => {
-        if(loaded === true) {
+        
+    })
+
+    const changeWeek = () => {
+        if(weeks[1][4] !== undefined)setListOne(weeks[1][4][0])
+        else setListOne([])
+        if(weeks[1][4] !== undefined)setListTwo(weeks[1][4][1])
+        else setListTwo([])
+        setLoaded(false)
+    }
+
+    const runRandomList = () => {
+        if(!loaded) {
             let randomListOne = listOne.sort((a, b) => Math.random() - 0.5)
             let randomListTwo = listTwo.sort((a, b) => Math.random() - 0.5)
             setListOne(randomListOne)
             setListTwo(randomListTwo)
-            setLoaded(false)
-        }        
-    },[listOne, listTwo, loaded])
-    
+            setLoaded(true)
+        }
+    }
+
+    useEffect(() => {
+        runRandomList()        
+    },[loaded])
+
     useEffect(() => {
         const newWeekList:any = []
         for(let i = 0; i < weeks.length; i++) {
@@ -151,6 +166,7 @@ const List = () => {
                     </Grid>
                 </Grid>
                 <Button className={classes.btn} variant='contained' onClick={correctAnswers}>Rätta</Button> 
+                <Button className={classes.btn} variant='contained' onClick={changeWeek}>Ny list</Button> 
             </Grid>
         </Grid>
     )
