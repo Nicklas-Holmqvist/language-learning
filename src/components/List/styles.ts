@@ -25,6 +25,27 @@ export default makeStyles(() => ({
         justifyContent: 'center',
         marginBottom: '2rem'
     },
+    sectionTop: {
+        display: 'flex',
+        justifyContent: 'center',
+        width: '30rem',
+        padding: '0 3rem 0 3rem'
+    },
+    sectionTopChoosed: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '30rem',
+        padding: '0 3rem 0 3rem'
+    },
+    sectionBottom: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '20rem',
+        padding: '0 3rem 0 3rem'
+    },
+    selector: {
+        width: '7rem',
+    },
     wordLeft: {
         display: 'flex',
         width: '15rem',
@@ -58,6 +79,6 @@ export default makeStyles(() => ({
         paddingBottom: '1rem'
     },
     header: {
-        paddingBottom: '1rem'
+        paddingBottom: '1rem',
     },
 }))

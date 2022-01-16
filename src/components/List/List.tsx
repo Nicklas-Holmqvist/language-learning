@@ -1,5 +1,6 @@
-import { Button, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
+import { Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
+import ReplayIcon from '@mui/icons-material/Replay';
 
 import { weeks } from '../../db/wordLists';
 
@@ -17,12 +18,20 @@ const List = () => {
     const [listTwo, setListTwo] = useState<IWordItem[]>([])
 
     const [listOfWeeks, setListOfWeeks] = useState<string[]>([])
+    const [selectorValue, setSelectorValue] = useState<any>(0)
+
+    const [correctListOne, setCorrectedListOne] = useState<{id:any, word: any}[]>([])
+    const [correctListTwo, setCorrectedListTwo] = useState<{id:any, word: any}[]>([])
 
     const changeWeek = (e: SelectChangeEvent) => {
         const choice:number = parseInt(e.target.value)
         const id:number = choice-3
         setListOne([])
         setListTwo([])
+        setCorrectedListOne([])
+        setCorrectedListTwo([])
+        setSelectorValue(choice)
+        setLoaded(false)
 
         if(choice === undefined) return
         if(weeks[id][choice] !== undefined)setListOne(weeks[id][choice][0])
@@ -35,6 +44,7 @@ const List = () => {
 
     const runRandomList = () => {
         if(!loaded) {
+            resetWeek()
             let randomListOne = listOne.sort((a, b) => Math.random() - 0.5)
             let randomListTwo = listTwo.sort((a, b) => Math.random() - 0.5)
             setListOne(randomListOne)
@@ -56,8 +66,6 @@ const List = () => {
         setListOfWeeks(newWeekList)
     },[])
 
-    const [correctListOne, setCorrectedListOne] = useState<{id:any, word: any}[]>([])
-    const [correctListTwo, setCorrectedListTwo] = useState<{id:any, word: any}[]>([])
 
     const handleChoice = (e:any) => {
         const isListOne = e.target.outerHTML.includes('listOne') 
@@ -78,6 +86,9 @@ const List = () => {
     }
 
     const correctAnswers = () => {
+
+        if((correctListOne.length === listOne.length && correctListTwo.length === listOne.length) === false) return
+
         for(let i = 0; i < correctListOne.length; i++) {
             const setCorrect = correctListOne[i].id === correctListTwo[i].id
             if(setCorrect) {
@@ -107,6 +118,20 @@ const List = () => {
         setListOne(rightOrderListOne)
         setListTwo(rightOrderListTwo)
         setCorrected(true)
+    }
+
+    const resetWeek = () => {
+        for(let i = 0; i < listOne.length; i++) {    
+            setCorrected(false)
+            setCorrectedListOne([])        
+            setCorrectedListTwo([])        
+            listOne[i].boolean = false
+            listTwo[i].boolean = false
+            listOne[i].number = ''
+            listTwo[i].number = ''
+            setListOne(listOne)            
+            setListTwo(listTwo)                  
+        }
     }
 
     const setActive = (id:number, isListOne:boolean) => {
@@ -154,37 +179,65 @@ const List = () => {
         </Button> 
     </Grid>)
 
-    const weekSelector = listOfWeeks.map((week) => <MenuItem value={week}>{week}</MenuItem>)
+    const weekSelectorItem = listOfWeeks.map((week) => <MenuItem value={week}>{week}</MenuItem>)
 
     return(
         <Grid container className={classes.container}>
             <Grid container className={classes.section}>
-                <Grid container className={classes.wordContainer}>
+                <Grid item className={selectorValue !== 0 ? classes.sectionTopChoosed : classes.sectionTop}>
                     <Typography className={classes.header} variant='h3'>Glosan</Typography>
-                    <FormControl fullWidth>
+                    {selectorValue !== 0 && 
+                        <FormControl className={classes.selector}>
                         <InputLabel id="weekSelect">Vecka</InputLabel>
                         <Select
                             labelId="weekSelect"
                             id="demo-simple-select"
                             label="Vecka"
-                            value=''
+                            value={selectorValue}
                             onChange={(e)=>changeWeek(e)}
                         >
-                            {weekSelector}
+                            {weekSelectorItem}
                         </Select>
-                    </FormControl>
+                        </FormControl>
+                    }
                 </Grid>
                 <Grid container className={classes.wordContainer}>
+                    {selectorValue === 0 && 
+                        <Grid item>
+                            <Typography variant='h5' className={classes.title}>Välj vecka</Typography>
+                            <FormControl className={classes.selector}>
+                            <InputLabel id="weekSelect">Vecka</InputLabel>
+                            <Select
+                                labelId="weekSelect"
+                                id="demo-simple-select"
+                                label="Vecka"
+                                value={selectorValue}
+                                onChange={(e)=>changeWeek(e)}
+                            >
+                                {weekSelectorItem}
+                            </Select>
+                            </FormControl>                        
+                        </Grid>
+                    }
                     <Grid item direction='column' className={classes.left}>
-                        <Typography className={classes.title}>Svenska</Typography>
+                        {selectorValue !== 0 && <Typography className={classes.title}>Svenska</Typography>}
                         {mapListOne}
                     </Grid>
                     <Grid item direction='column' className={classes.right}>
-                        <Typography className={classes.title}>Engelska</Typography>
+                    {selectorValue !== 0 && <Typography className={classes.title}>English</Typography>}
                         {mapListTwo}
                     </Grid>
                 </Grid>
-                <Button className={classes.btn} variant='contained' onClick={correctAnswers}>Rätta</Button>
+                <Grid item className={classes.sectionBottom}>
+                    {selectorValue !== 0 && 
+                    <>
+                        <Button className={classes.btn} variant='contained' onClick={correctAnswers}>Rätta</Button>
+                        <IconButton color="primary" onClick={()=>setLoaded(false)} aria-label="reload" component="span">
+                            <ReplayIcon />
+                        </IconButton>
+                    </>    
+                    }
+                </Grid>
             </Grid>
         </Grid>
     )
