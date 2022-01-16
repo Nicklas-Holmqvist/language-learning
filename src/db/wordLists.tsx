@@ -1,6 +1,6 @@
 import { IWordItem } from "../type/wordItem";
 
-export const weeks = [
+export const weeks:any = [
   {3:[[
     { id: 1, word: "mun", boolean: false, number: "",  correct: false },
     { id: 2, word: "tand", boolean: false, number: "",  correct: false },

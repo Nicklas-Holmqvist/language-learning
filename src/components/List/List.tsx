@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 
 import { weeks } from '../../db/wordLists';
@@ -18,16 +18,19 @@ const List = () => {
 
     const [listOfWeeks, setListOfWeeks] = useState<string[]>([])
 
-    useEffect(() => {
-        
-    })
+    const changeWeek = (e: SelectChangeEvent) => {
+        const choice:number = parseInt(e.target.value)
+        const id:number = choice-3
+        setListOne([])
+        setListTwo([])
 
-    const changeWeek = () => {
-        if(weeks[1][4] !== undefined)setListOne(weeks[1][4][0])
+        if(choice === undefined) return
+        if(weeks[id][choice] !== undefined)setListOne(weeks[id][choice][0])
         else setListOne([])
-        if(weeks[1][4] !== undefined)setListTwo(weeks[1][4][1])
+        if(weeks[id][choice] !== undefined)setListTwo(weeks[id][choice][1])
         else setListTwo([])
         setLoaded(false)
+
     }
 
     const runRandomList = () => {
@@ -151,10 +154,26 @@ const List = () => {
         </Button> 
     </Grid>)
 
+    const weekSelector = listOfWeeks.map((week) => <MenuItem value={week}>{week}</MenuItem>)
+
     return(
         <Grid container className={classes.container}>
             <Grid container className={classes.section}>
-                <Typography className={classes.header} variant='h3'>Glosan</Typography>
+                <Grid container className={classes.wordContainer}>
+                    <Typography className={classes.header} variant='h3'>Glosan</Typography>
+                    <FormControl fullWidth>
+                        <InputLabel id="weekSelect">Vecka</InputLabel>
+                        <Select
+                            labelId="weekSelect"
+                            id="demo-simple-select"
+                            label="Vecka"
+                            value=''
+                            onChange={(e)=>changeWeek(e)}
+                        >
+                            {weekSelector}
+                        </Select>
+                    </FormControl>
+                </Grid>
                 <Grid container className={classes.wordContainer}>
                     <Grid item direction='column' className={classes.left}>
                         <Typography className={classes.title}>Svenska</Typography>
@@ -165,8 +184,7 @@ const List = () => {
                         {mapListTwo}
                     </Grid>
                 </Grid>
-                <Button className={classes.btn} variant='contained' onClick={correctAnswers}>Rätta</Button> 
-                <Button className={classes.btn} variant='contained' onClick={changeWeek}>Ny list</Button> 
+                <Button className={classes.btn} variant='contained' onClick={correctAnswers}>Rätta</Button>
             </Grid>
         </Grid>
     )
