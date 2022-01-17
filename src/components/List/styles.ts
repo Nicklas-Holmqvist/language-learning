@@ -28,9 +28,10 @@ export default makeStyles(() => ({
         padding: '0 3rem 0 3rem'
     },
     sectionTopChoosed: {
-        width: '100%',
-        justifyContent:'space-around',
-        padding: '0 2rem 0 2rem'
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '25rem',
+        padding: '1.5rem 3rem 0 3rem'
     },
     sectionBottom: {
         display: 'flex',

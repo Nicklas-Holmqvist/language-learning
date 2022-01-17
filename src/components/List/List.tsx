@@ -185,7 +185,7 @@ const List = () => {
     return(
         <Grid container display='flex' direction='column' alignItems='center' justifyContent='center' className={classes.container}>
             <Grid container item display='flex' direction='column' alignItems='center' justifyContent='center'>
-                <Grid item display='flex' direction='row' className={selectorValue !== 0 ? classes.sectionTopChoosed : classes.sectionTop}>
+                <Grid item className={selectorValue !== 0 ? classes.sectionTopChoosed : classes.sectionTop}>
                     <Typography className={classes.header} variant='h3'>Glosan</Typography>
                     {selectorValue !== 0 && 
                         <FormControl className={classes.selector}>
@@ -202,23 +202,23 @@ const List = () => {
                         </FormControl>
                     }
                 </Grid>
-                    {selectorValue === 0 && 
-                        <Grid item>
-                            <Typography variant='h5' className={classes.title}>Välj vecka</Typography>
-                            <FormControl className={classes.selector}>
-                            <InputLabel id="weekSelect">Vecka</InputLabel>
-                            <Select
-                                labelId="weekSelect"
-                                id="demo-simple-select"
-                                label="Vecka"
-                                value={selectorValue}
-                                onChange={(e)=>changeWeek(e)}
-                            >
-                                {weekSelectorItem}
-                            </Select>
-                            </FormControl>                        
-                        </Grid>
-                    }
+                {selectorValue === 0 && 
+                    <Grid item>
+                        <Typography variant='h5' className={classes.title}>Välj vecka</Typography>
+                        <FormControl className={classes.selector}>
+                        <InputLabel id="weekSelect">Vecka</InputLabel>
+                        <Select
+                            labelId="weekSelect"
+                            id="demo-simple-select"
+                            label="Vecka"
+                            value={selectorValue}
+                            onChange={(e)=>changeWeek(e)}
+                        >
+                            {weekSelectorItem}
+                        </Select>
+                        </FormControl>                        
+                    </Grid>
+                }
                 <Grid className={classes.wordContainer}>
                     <Grid direction='column' className={classes.left}>
                         {selectorValue !== 0 && <Typography variant='h6' className={classes.title}>Svenska</Typography>}
