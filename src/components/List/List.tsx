@@ -184,7 +184,7 @@ const List = () => {
 
     return(
         <Grid container display='flex' direction='column' alignItems='center' justifyContent='center' className={classes.container}>
-            <Grid container item display='flex' direction='column' alignItems='center' justifyContent='center'>
+            <Grid container sx={{ width:375 }} item display='flex' direction='column' alignItems='center' justifyContent='center'>
                 <Grid item className={selectorValue !== 0 ? classes.sectionTopChoosed : classes.sectionTop}>
                     <Typography className={classes.header} variant='h3'>Glosan</Typography>
                     {selectorValue !== 0 && 
@@ -219,7 +219,7 @@ const List = () => {
                         </FormControl>                        
                     </Grid>
                 }
-                <Grid className={classes.wordContainer}>
+                <Grid item sx={{ width:375 }} className={classes.wordContainer}>
                     <Grid direction='column' className={classes.left}>
                         {selectorValue !== 0 && <Typography variant='h6' className={classes.title}>Svenska</Typography>}
                         {mapListOne}

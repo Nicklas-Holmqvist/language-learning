@@ -17,21 +17,20 @@ export default makeStyles(() => ({
     },
     wordContainer: {
         display: 'flex',
-        maxWidth:'100%',
+        width:'100%',
         justifyContent: 'space-between',
-        padding: '0 1rem',
-        marginBottom: '2rem'
+        padding: '0 0.5rem 0 0.5rem',
     },
     sectionTop: {
         width: '100%',
         justifyContent:'center',
-        padding: '0 3rem 0 3rem'
+        padding: '0 1rem 0 1rem'
     },
     sectionTopChoosed: {
         display: 'flex',
         justifyContent: 'space-between',
-        width: '25rem',
-        padding: '1.5rem 3rem 0 3rem'
+        width: '100%',
+        padding: '1.5rem 2rem 0 2rem'
     },
     sectionBottom: {
         display: 'flex',
@@ -44,29 +43,31 @@ export default makeStyles(() => ({
     },
     wordLeft: {
         display: 'flex',
-        width: '15rem',
+        width: '100%',
         justifyContent: 'space-between',
         padding: '0.2rem 0.2rem 0.2rem 0'
     },
     wordRight: {
         display: 'flex',
-        width: '15rem',
+        width: '100%',
         justifyContent: 'space-between',
         padding: '0.2rem 0 0.2rem 0.2rem'
     },
     choiceLeft: {
-        paddingLeft: '2rem'
+        // paddingLeft: '2rem'
     },
     choiceRight: {
-        paddingRight: '2rem'
+        // paddingRight: '2rem'
     },
     left: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        width: '100%'
     },
     right: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        width: '100%'
     },
     btn: {
         width: '7rem',
