@@ -183,9 +183,9 @@ const List = () => {
     const weekSelectorItem = listOfWeeks.map((week) => <MenuItem value={week}>{week}</MenuItem>)
 
     return(
-        <Grid container className={classes.container}>
-            <Grid container className={classes.section}>
-                <Grid item className={selectorValue !== 0 ? classes.sectionTopChoosed : classes.sectionTop}>
+        <Grid container display='flex' direction='column' alignItems='center' justifyContent='center' className={classes.container}>
+            <Grid container item display='flex' direction='column' alignItems='center' justifyContent='center'>
+                <Grid item display='flex' direction='row' className={selectorValue !== 0 ? classes.sectionTopChoosed : classes.sectionTop}>
                     <Typography className={classes.header} variant='h3'>Glosan</Typography>
                     {selectorValue !== 0 && 
                         <FormControl className={classes.selector}>
@@ -219,8 +219,8 @@ const List = () => {
                             </FormControl>                        
                         </Grid>
                     }
-                <Grid container className={classes.wordContainer}>
-                    <Grid item direction='column' className={classes.left}>
+                <Grid item direction='row' className={classes.wordContainer}>
+                    <Grid direction='column' className={classes.left}>
                         {selectorValue !== 0 && <Typography variant='h6' className={classes.title}>Svenska</Typography>}
                         {mapListOne}
                     </Grid>

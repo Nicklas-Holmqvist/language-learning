@@ -5,57 +5,51 @@ export default makeStyles(() => ({
         fontWeight:'bold'
     },
     container: {
-        display: 'flex',
-        justifyContent: 'center',
-        maxWidth: '20rm',
         width: '100%',
         height: '90vh'
     },
     section: {
         height: '100%',
-        width: '30rem',
+        width: '100%',
         display: 'flex',
-        alignContent: 'center',
         justifyContent: 'center',
-        flexDirection: 'column'
+        alignContent: 'center',
     },
     wordContainer: {
         display: 'flex',
-        width: '30rem',
+        maxWidth:'35rem',
         justifyContent: 'space-between',
         padding: '0 1rem',
         marginBottom: '2rem'
     },
     sectionTop: {
-        display: 'flex',
-        justifyContent: 'center',
         width: '30rem',
+        justifyContent:'center',
         padding: '0 3rem 0 3rem'
     },
     sectionTopChoosed: {
-        display: 'flex',
-        justifyContent: 'space-between',
         width: '30rem',
+        justifyContent:'space-around',
         padding: '0 2rem 0 2rem'
     },
     sectionBottom: {
         display: 'flex',
         justifyContent: 'space-between',
         width: '20rem',
-        padding: '0 3rem 0 3rem'
+        padding: '1.5rem 3rem 0 3rem'
     },
     selector: {
         width: '7rem',
     },
     wordLeft: {
         display: 'flex',
-        width: '50%',
+        width: '15rem',
         justifyContent: 'space-between',
         padding: '0.2rem 0.2rem 0.2rem 0'
     },
     wordRight: {
         display: 'flex',
-        width: '50%',
+        width: '15rem',
         justifyContent: 'space-between',
         padding: '0.2rem 0 0.2rem 0.2rem'
     },
