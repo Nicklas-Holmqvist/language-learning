@@ -23,12 +23,12 @@ export default makeStyles(() => ({
         marginBottom: '2rem'
     },
     sectionTop: {
-        width: '30rem',
+        width: '100%',
         justifyContent:'center',
         padding: '0 3rem 0 3rem'
     },
     sectionTopChoosed: {
-        width: '30rem',
+        width: '100%',
         justifyContent:'space-around',
         padding: '0 2rem 0 2rem'
     },
