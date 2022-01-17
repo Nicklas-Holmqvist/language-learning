@@ -17,7 +17,7 @@ export default makeStyles(() => ({
     },
     wordContainer: {
         display: 'flex',
-        maxWidth:'35rem',
+        maxWidth:'100%',
         justifyContent: 'space-between',
         padding: '0 1rem',
         marginBottom: '2rem'

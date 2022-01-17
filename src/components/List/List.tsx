@@ -219,7 +219,7 @@ const List = () => {
                             </FormControl>                        
                         </Grid>
                     }
-                <Grid item direction='row' className={classes.wordContainer}>
+                <Grid className={classes.wordContainer}>
                     <Grid direction='column' className={classes.left}>
                         {selectorValue !== 0 && <Typography variant='h6' className={classes.title}>Svenska</Typography>}
                         {mapListOne}
