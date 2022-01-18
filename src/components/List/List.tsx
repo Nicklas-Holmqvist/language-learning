@@ -3,6 +3,7 @@ import { Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Select, Se
 import ReplayIcon from '@mui/icons-material/Replay';
 
 import { weeks } from '../../db/wordLists';
+import ModalList from '../ModalList/ModalList'
 
 import { IWordItem } from "../../type/wordItem";
 import useStyles from './styles';
@@ -17,11 +18,16 @@ const List = () => {
     const [listOne, setListOne] = useState<IWordItem[]>([])
     const [listTwo, setListTwo] = useState<IWordItem[]>([])
 
+    const [practiceListOne, setPracticeListOne] = useState<IWordItem[]>([])
+    const [practiceListTwo, setPracticeListTwo] = useState<IWordItem[]>([])
+
     const [listOfWeeks, setListOfWeeks] = useState<string[]>([])
     const [selectorValue, setSelectorValue] = useState<any>(0)
 
     const [correctListOne, setCorrectedListOne] = useState<{id:any, word: any}[]>([])
     const [correctListTwo, setCorrectedListTwo] = useState<{id:any, word: any}[]>([])
+
+    const [openModal, setOpenModal] = useState<boolean>(false)
 
     const changeWeek = (e: SelectChangeEvent) => {
         const choice:number = parseInt(e.target.value)
@@ -30,6 +36,8 @@ const List = () => {
         setListTwo([])
         setCorrectedListOne([])
         setCorrectedListTwo([])
+        setPracticeListOne([])
+        setPracticeListTwo([])
         setSelectorValue(choice)
         setLoaded(false)
 
@@ -38,6 +46,8 @@ const List = () => {
         else setListOne([])
         if(weeks[id][choice] !== undefined)setListTwo(weeks[id][choice][1])
         else setListTwo([])
+        setPracticeListOne(weeks[id][choice][0])
+        setPracticeListTwo(weeks[id][choice][1])
         setLoaded(false)
 
     }
@@ -66,7 +76,6 @@ const List = () => {
         }
         setListOfWeeks(newWeekList)
     },[])
-
 
     const handleChoice = (e:any) => {
         const isListOne = e.target.outerHTML.includes('listOne') 
@@ -183,6 +192,16 @@ const List = () => {
     const weekSelectorItem = listOfWeeks.map((week) => <MenuItem value={week}>{week}</MenuItem>)
 
     return(
+        <>
+        {openModal === true && 
+            <ModalList 
+                open={true} 
+                handleClose={() => {
+                    setLoaded(false)
+                    setOpenModal(!openModal)}
+                }
+                lists={[practiceListOne, practiceListTwo]}
+            /> } 
         <Grid container display='flex' direction='column' alignItems='center' justifyContent='center' className={classes.container}>
             <Grid container sx={{ width:375 }} item display='flex' direction='column' alignItems='center' justifyContent='center'>
                 <Grid item className={selectorValue !== 0 ? classes.sectionTopChoosed : classes.sectionTop}>
@@ -195,7 +214,10 @@ const List = () => {
                             id="demo-simple-select"
                             label="Vecka"
                             value={selectorValue}
-                            onChange={(e)=>changeWeek(e)}
+                            onChange={(e)=>{
+                                setOpenModal(true)
+                                changeWeek(e)}
+                            }
                         >
                             {weekSelectorItem}
                         </Select>
@@ -212,7 +234,10 @@ const List = () => {
                             id="demo-simple-select"
                             label="Vecka"
                             value={selectorValue}
-                            onChange={(e)=>changeWeek(e)}
+                            onChange={(e)=>{
+                                setOpenModal(true)
+                                changeWeek(e)}
+                            }
                         >
                             {weekSelectorItem}
                         </Select>
@@ -241,6 +266,7 @@ const List = () => {
                 </Grid>
             </Grid>
         </Grid>
+        </>
     )
 }
 
