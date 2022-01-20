@@ -28,7 +28,7 @@ const ModalList = (props:any) => {
       ))
       
       const listTwo = lists[1].sort((a:any, b:any) => {return a.id - b.id}).map((word:IWordItem) => (
-        <Typography align='right'  className={classes.wordRight}>{word.word}</Typography>
+        <Typography  align='right'  className={classes.wordRight}>{word.word}</Typography>
       ))    
       const listLine = lists[0].sort((a:any, b:any) => {return a.id - b.id}).map((word:IWordItem) => (
         <Typography align='right'  className={classes.line}>-</Typography>

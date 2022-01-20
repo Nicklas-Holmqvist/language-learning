@@ -78,4 +78,7 @@ export default makeStyles(() => ({
     header: {
         paddingBottom: '1rem',
     },
+    word:{
+        height: '2rem'
+    }
 }))
