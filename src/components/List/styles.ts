@@ -6,14 +6,13 @@ export default makeStyles(() => ({
     },
     container: {
         width: '100%',
-        height: '90vh'
+        height: '100vh',
     },
     section: {
-        height: '100%',
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignContent: 'center',
+        margin: '2rem 3rem',
+        border: '1px solid black',
+        borderRadius: '5px',
+        height: '40rem',
     },
     wordContainer: {
         display: 'flex',
@@ -24,19 +23,19 @@ export default makeStyles(() => ({
     sectionTop: {
         width: '100%',
         justifyContent:'center',
-        padding: '0 1rem 0 1rem'
+        padding: '0 1rem 0 1rem',
     },
     sectionTopChoosed: {
         display: 'flex',
         justifyContent: 'space-between',
         width: '100%',
-        padding: '1.5rem 2rem 0 2rem'
+        padding: '1.5rem 2rem 0 2rem',
     },
     sectionBottom: {
         display: 'flex',
         justifyContent: 'space-between',
         width: '20rem',
-        padding: '1.5rem 3rem 0 3rem'
+        padding: '1.5rem 3rem 1.5rem 3rem'
     },
     selector: {
         width: '7rem',
@@ -61,13 +60,20 @@ export default makeStyles(() => ({
     },
     left: {
         display: 'flex',
-        justifyContent: 'center',
-        width: '100%'
+        justifyContent: 'space-between',
+        width: '100%',
+        height:'100%',
+        paddingLeft: '0.5rem'
     },
     right: {
         display: 'flex',
-        justifyContent: 'center',
-        width: '100%'
+        justifyContent: 'space-between',
+        width: '100%',
+        height:'100%',
+        paddingRight: '0.5rem'
+    },
+    wordBtn: {
+        width: '9rem',
     },
     btn: {
         width: '7rem',

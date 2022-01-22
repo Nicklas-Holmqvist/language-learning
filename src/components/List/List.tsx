@@ -159,35 +159,36 @@ const List = () => {
     }
 
     const mapListOne = listOne.map((word) => 
-    <Grid key={word.id} container item direction='row' className={classes.wordLeft}>
-        <Button 
-            onClick={handleChoice} 
-            variant={word.boolean ? 'contained' : 'outlined'} 
-            className={word.boolean ? classes.active : ''} 
-            value='listOne' 
-            color={word.correct && corrected ? 'success' : corrected ? 'error' : 'primary'}
-            id={word.id.toString()}            
-            >
-                {word.word}
-        </Button> 
-        <Typography className={classes.choiceLeft}>{word.number !== '' && word.number}</Typography>
+        <Grid key={word.id} container item direction='row' className={classes.wordLeft}>
+            <Button 
+                onClick={handleChoice} 
+                variant={word.boolean ? 'contained' : 'outlined'} 
+                className={`${classes.wordBtn} ${word.boolean ? classes.active : ''}`} 
+                value='listOne' 
+                color={word.correct && corrected ? 'success' : corrected ? 'error' : 'primary'}
+                id={word.id.toString()}            
+                >
+                    {word.word}
+            </Button> 
+            <Typography className={classes.choiceLeft}>{word.number !== '' && word.number}</Typography>
     </Grid>
     )
 
     const mapListTwo = listTwo.map((word) => 
         <Grid key={word.id} container item direction='row' className={classes.wordRight}>
-       <Typography className={classes.choiceRight}>{word.number !== '' && word.number}</Typography>
-        <Button 
-            onClick={handleChoice} 
-            variant={word.boolean ? 'contained' : 'outlined'} 
-            className={word.boolean ? classes.active : ''} 
-            value='listTwo' 
-            color={word.correct && corrected ? 'success' : corrected ? 'error' : 'primary'}
-            id={word.id.toString()}
-            >
-                {word.word}
-        </Button> 
-    </Grid>)
+            <Typography className={classes.choiceRight}>{word.number !== '' && word.number}</Typography>
+            <Button 
+                onClick={handleChoice} 
+                variant={word.boolean ? 'contained' : 'outlined'} 
+                className={`${classes.wordBtn} ${word.boolean ? classes.active : ''}`} 
+                value='listTwo' 
+                color={word.correct && corrected ? 'success' : corrected ? 'error' : 'primary'}
+                id={word.id.toString()}
+                >
+                    {word.word}
+            </Button> 
+        </Grid>
+    )
 
     const weekSelectorItem = listOfWeeks.map((week) => <MenuItem value={week}>{week}</MenuItem>)
 
@@ -203,7 +204,7 @@ const List = () => {
                 lists={[practiceListOne, practiceListTwo]}
             /> } 
         <Grid container display='flex' direction='column' alignItems='center' justifyContent='center' className={classes.container}>
-            <Grid container sx={{ width:375 }} item display='flex' direction='column' alignItems='center' justifyContent='center'>
+            <Grid container sx={{ width:375 }} item display='flex' direction='column' alignItems='center' justifyContent='center' className={classes.section}>
                 <Grid item className={selectorValue !== 0 ? classes.sectionTopChoosed : classes.sectionTop}>
                     <Typography className={classes.header} variant='h3'>Glosan</Typography>
                     {selectorValue !== 0 && 
@@ -250,7 +251,7 @@ const List = () => {
                         {mapListOne}
                     </Grid>
                     <Grid item direction='column' className={classes.right}>
-                    {selectorValue !== 0 && <Typography variant='h6' className={classes.title}>English</Typography>}
+                        {selectorValue !== 0 && <Typography variant='h6' className={classes.title}>English</Typography>}
                         {mapListTwo}
                     </Grid>
                 </Grid>

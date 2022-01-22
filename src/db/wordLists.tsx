@@ -20,7 +20,7 @@ export const weeks:any = [
   {4:[[
     { id: 1, word: "de", boolean: false, number: "",  correct: false },
     { id: 2, word: "utforska", boolean: false, number: "",  correct: false },
-    { id: 3, word: "use", boolean: false, number: "",  correct: false },
+    { id: 3, word: "använda", boolean: false, number: "",  correct: false },
     { id: 4, word: "kikare", boolean: false, number: "",  correct: false },
     { id: 5, word: "vad gör han?", boolean: false, number: "",  correct: false },
     { id: 6, word: "självklart", boolean: false, number: "",  correct: false },
@@ -29,7 +29,7 @@ export const weeks:any = [
   [
     { id: 1, word: "they", boolean: false, number: "",  correct: false },
     { id: 2, word: "explore", boolean: false, number: "",  correct: false },
-    { id: 3, word: "använda", boolean: false, number: "",  correct: false },
+    { id: 3, word: "use", boolean: false, number: "",  correct: false },
     { id: 4, word: "binoculars", boolean: false, number: "",  correct: false },
     { id: 5, word: "what is he doing?", boolean: false, number: "",  correct: false },
     { id: 6, word: "ofcourse", boolean: false, number: "",  correct: false },
