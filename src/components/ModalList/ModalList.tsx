@@ -19,7 +19,8 @@ const ModalList = (props:any) => {
         width: 350,
         bgcolor: 'background.paper',
         border: '0.5px solid #000',
-        boxShadow: 16,        
+        boxShadow: 16,     
+        borderRadius: 1,   
         p: 4,
       };
       

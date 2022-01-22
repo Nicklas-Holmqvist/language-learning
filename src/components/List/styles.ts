@@ -13,6 +13,7 @@ export default makeStyles(() => ({
         border: '1px solid black',
         borderRadius: '5px',
         height: '40rem',
+        backgroundColor: '#F0F7F4'
     },
     wordContainer: {
         display: 'flex',
