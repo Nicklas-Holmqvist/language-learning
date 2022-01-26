@@ -35,4 +35,22 @@ export const weeks:any = [
     { id: 6, word: "ofcourse", boolean: false, number: "",  correct: false },
     { id: 7, word: "he is going bananas", boolean: false, number: "",  correct: false },
   ],]},
+  {5:[[
+    { id: 1, word: "han skrattar", boolean: false, number: "",  correct: false },
+    { id: 2, word: "han springer runt", boolean: false, number: "",  correct: false },
+    { id: 3, word: "han gör en kullerbytta", boolean: false, number: "",  correct: false },
+    { id: 4, word: "floden", boolean: false, number: "",  correct: false },
+    { id: 5, word: "retas", boolean: false, number: "",  correct: false },
+    { id: 6, word: "fånga", boolean: false, number: "",  correct: false },
+    { id: 7, word: "då kom", boolean: false, number: "",  correct: false },
+  ],
+  [
+    { id: 1, word: "he laughs", boolean: false, number: "",  correct: false },
+    { id: 2, word: "he runs around", boolean: false, number: "",  correct: false },
+    { id: 3, word: "he does a somersault", boolean: false, number: "",  correct: false },
+    { id: 4, word: "the river", boolean: false, number: "",  correct: false },
+    { id: 5, word: "teasing", boolean: false, number: "",  correct: false },
+    { id: 6, word: "catch", boolean: false, number: "",  correct: false },
+    { id: 7, word: "along came", boolean: false, number: "",  correct: false },
+  ],]},
 ];
