@@ -187,7 +187,7 @@ export const weeks: any = [
           correct: false,
         },
         { id: 7, word: 'hurry up', boolean: false, number: '', correct: false },
-        { id: 6, word: 'take', boolean: false, number: '', correct: false },
+        { id: 8, word: 'take', boolean: false, number: '', correct: false },
       ],
     ],
   },
