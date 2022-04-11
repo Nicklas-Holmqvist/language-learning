@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Veckans glosor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Link to weapplication [Veckans glosor](https://veckans-glosor.netlify.app/).
 
-## Available Scripts
+## What it is
 
-In the project directory, you can run:
+Veckans glosor is a homework webapplication that I made for my son. Every week they have english words in homework. 
+And to make it easier to do the homework on his terms I made this webapplication.
 
-### `npm start`
+## How it works
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+It can be used on any device of choice and the startscreen is to choose the week.
+After a week is choosen a list on the words is displyed so you can read the swedish and english words.
+When you are done reading the words you go forward to the actual homework.
+You've got two lists of words and you are going to match the words.
+When a word is being pressed a number will be displyed beside that word. This is the matching between the lists.
+After all words is pressed you can correct the answers. If you have some errors they will be marked in red and right answers in green.
+The words that was getting a wrong answer is going to get the matching number for what the correct word is.
+When you are done reading the wrong words you can refresh the list and it will be sorted all random for a new try.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## What is behind
 
-### `npm test`
+This is a ReactJS application build with MUI. All the words is manual written in a tsx-file.
+I wanted to map out the lists and do all the functionality in that mapped components instead to have a static list.
+It isn't very dynamic thinking.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### List component (very potential for refactoring to use for both lists)
 
-### `npm run build`
+    const mapListOne = listOne.map((word) => 
+        <Grid key={word.id} container item direction='row' className={classes.wordLeft}>
+            <Button 
+                onClick={handleChoice} 
+                variant={word.boolean ? 'contained' : 'outlined'} 
+                className={`${classes.wordBtn} ${word.boolean ? classes.active : ''}`} 
+                value='listOne' 
+                color={word.correct && corrected ? 'success' : corrected ? 'error' : 'primary'}
+                id={word.id.toString()}            
+                >
+                    {word.word}
+            </Button> 
+            <Typography className={classes.choiceLeft}>{word.number !== '' && word.number}</Typography>
+    </Grid>
+    )
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### List example
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    
+    3: [
+      [
+        { id: 1, word: 'mun', boolean: false, number: '', correct: false },
+        { id: 2, word: 'tand', boolean: false, number: '', correct: false },
+        { id: 3, word: 'mage', boolean: false, number: '', correct: false },
+        { id: 4, word: 'svans', boolean: false, number: '', correct: false },
+        { id: 5, word: 'armbåge', boolean: false, number: '', correct: false },
+        { id: 6, word: 'axel', boolean: false, number: '', correct: false },
+      ],
+      [
+        { id: 1, word: 'mouth', boolean: false, number: '', correct: false },
+        { id: 2, word: 'tooth', boolean: false, number: '', correct: false },
+        { id: 3, word: 'stomach', boolean: false, number: '', correct: false },
+        { id: 4, word: 'tail', boolean: false, number: '', correct: false },
+        { id: 5, word: 'elbow', boolean: false, number: '', correct: false },
+        { id: 6, word: 'shoulder', boolean: false, number: '', correct: false },
+      ],
+    ],
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Future
+  
+I wanna add some functions like write the words or simply have one word with more chooises.
+Nicer UI/UX
